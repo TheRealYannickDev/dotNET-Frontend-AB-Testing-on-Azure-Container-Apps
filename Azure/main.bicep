@@ -1,4 +1,5 @@
-param location string = resourceGroup().location
+param location string = resourceGroup().locationparam owner string
+param owner string
 
 // create the azure container registry
 resource acr 'Microsoft.ContainerRegistry/registries@2021-09-01' = {
@@ -8,7 +9,7 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-09-01' = {
     name: 'Basic'
   }
  tags: {
-    owner: 'yannick.lehmann@quibiq.de' // or param value
+    owner: owner
   }
   properties: {
     adminUserEnabled: true
