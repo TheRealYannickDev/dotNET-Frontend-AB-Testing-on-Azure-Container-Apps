@@ -7,6 +7,9 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-09-01' = {
   sku: {
     name: 'Basic'
   }
+ tags: {
+    owner: 'yannick.lehmann@quibiq.de' // or param value
+  }
   properties: {
     adminUserEnabled: true
   }
