@@ -37,7 +37,7 @@ jobs:
           echo "Creating resource group in Azure"
           echo "Executing 'az group create -l ${{ env.REGION }} -n ${{ env.RESOURCE_GROUP_NAME }}'"
 
-          az group create -l ${{ env.REGION }} -n ${{ env.RESOURCE_GROUP_NAME }}
+          az group create -l ${{ env.REGION }} -n ${{ env.RESOURCE_GROUP_NAME }} --tags owner="yannick.lehmann@quibiq.de"
 
     - name: Creating resources
       uses: azure/CLI@v1
@@ -45,7 +45,7 @@ jobs:
         inlineScript: >
           echo "Creating resources"
 
-          az deployment group create --resource-group ${{ env.RESOURCE_GROUP_NAME }} --template-file '/github/workspace/Azure/main.bicep' --parameters owner=${{ github.actor }} --debug
+          az deployment group create --resource-group ${{ env.RESOURCE_GROUP_NAME }} --template-file '/github/workspace/Azure/main.bicep' --parameters owner="yannick.lehmann@quibiq.de" \ --debug
 
   build:
     runs-on: ubuntu-latest
